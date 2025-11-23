@@ -1,55 +1,3 @@
-<?php
-// --- SERVER-SIDE DATA CONFIGURATION ---
-
-// Team Data
-$teamMembers = [
-    [
-        "name" => "Joseph Yewlett",
-        "role" => "Team Leader & Frontend",
-        "email" => "joseph.yewlett@icloud.com",
-        "discord" => "jyewlett",
-        "icon" => "fa-user-astronaut"
-    ],
-    [
-        "name" => "Lina Tlemcani",
-        "role" => "Data Science Lead",
-        "email" => "lr921@ic.ac.uk",
-        "discord" => "cinnamonroll25",
-        "icon" => "fa-chart-network"
-    ],
-    [
-        "name" => "Ying Wang",
-        "role" => "Enterprise & Client Focus",
-        "email" => "yingwang.vivian@gmail.com",
-        "discord" => "Ying_W",
-        "icon" => "fa-briefcase"
-    ],
-    [
-        "name" => "Harshit Satsangi",
-        "role" => "Coded Solution & MCP Lead",
-        "email" => "hs2125@ic.ac.uk",
-        "discord" => "hs07_77461",
-        "icon" => "fa-code-branch"
-    ]
-];
-
-// Tech Stack Data
-$techStack = [
-    "AI Core" => "Claude Sonnet & MCP Orchestrator",
-    "Protocol" => "Beckn (Discovery & Transaction)",
-    "Data Sources" => "National Grid ESO, Elexon BMRS",
-    "Backend" => "PHP on Google Cloud Compute",
-    "Optimization" => "Linear Programming (Short-horizon)"
-];
-
-// Impact Stats (Mock Data for Display)
-$impactStats = [
-    ["label" => "Grid Stability", "value" => "98%", "color" => "text-emerald-400"],
-    ["label" => "Compute Deferral", "value" => "4.2 MW", "color" => "text-blue-400"],
-    ["label" => "Carbon Reduced", "value" => "-15%", "color" => "text-teal-400"]
-];
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -156,7 +104,7 @@ $impactStats = [
                 </div>
                 <div class="text-right hidden md:block">
                     <div class="text-sm text-gray-500">Current Time (London)</div>
-                    <div class="text-xl font-mono text-emerald-400"><?php echo date('H:i:s T'); ?></div>
+                    <div id="live-clock" class="text-xl font-mono text-emerald-400">--:--:--</div>
                 </div>
             </div>
 
@@ -188,12 +136,18 @@ $impactStats = [
                 </div>
 
                 <!-- Stat Cards -->
-                <?php foreach($impactStats as $stat): ?>
                 <div class="glass-panel rounded-xl p-6 text-center hover:bg-gray-800/50 transition duration-300">
-                    <div class="text-sm text-gray-500 uppercase tracking-widest mb-1"><?= $stat['label'] ?></div>
-                    <div class="text-3xl font-bold <?= $stat['color'] ?>"><?= $stat['value'] ?></div>
+                    <div class="text-sm text-gray-500 uppercase tracking-widest mb-1">Grid Stability</div>
+                    <div class="text-3xl font-bold text-emerald-400">98%</div>
                 </div>
-                <?php endforeach; ?>
+                <div class="glass-panel rounded-xl p-6 text-center hover:bg-gray-800/50 transition duration-300">
+                    <div class="text-sm text-gray-500 uppercase tracking-widest mb-1">Compute Deferral</div>
+                    <div class="text-3xl font-bold text-blue-400">4.2 MW</div>
+                </div>
+                <div class="glass-panel rounded-xl p-6 text-center hover:bg-gray-800/50 transition duration-300">
+                    <div class="text-sm text-gray-500 uppercase tracking-widest mb-1">Carbon Reduced</div>
+                    <div class="text-3xl font-bold text-teal-400">-15%</div>
+                </div>
             </div>
         </div>
     </section>
@@ -252,20 +206,59 @@ $impactStats = [
             <h2 class="text-3xl font-bold mb-12 text-center">Meet the Team</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <?php foreach($teamMembers as $member): ?>
+                
+                <!-- Team Member 1 -->
                 <div class="glass-panel rounded-xl p-6 text-center group hover:-translate-y-2 transition duration-300">
                     <div class="w-20 h-20 mx-auto bg-gradient-to-br from-gray-800 to-black rounded-full flex items-center justify-center mb-4 border border-gray-700 group-hover:border-emerald-500 transition">
-                        <i class="fa-solid <?= $member['icon'] ?> text-3xl text-gray-400 group-hover:text-white"></i>
+                        <i class="fa-solid fa-user-astronaut text-3xl text-gray-400 group-hover:text-white"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white"><?= $member['name'] ?></h3>
-                    <p class="text-emerald-400 text-sm mb-4"><?= $member['role'] ?></p>
-                    
+                    <h3 class="text-lg font-bold text-white">Joseph Yewlett</h3>
+                    <p class="text-emerald-400 text-sm mb-4">Team Leader & Frontend</p>
                     <div class="flex justify-center gap-3 opacity-60 group-hover:opacity-100 transition">
-                        <a href="mailto:<?= $member['email'] ?>" class="hover:text-emerald-400" title="Email"><i class="fa-solid fa-envelope"></i></a>
-                        <a href="#" class="hover:text-indigo-400" title="Discord: <?= $member['discord'] ?>"><i class="fa-brands fa-discord"></i></a>
+                        <a href="mailto:joseph.yewlett@icloud.com" class="hover:text-emerald-400" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                        <a href="#" class="hover:text-indigo-400" title="Discord: jyewlett"><i class="fa-brands fa-discord"></i></a>
                     </div>
                 </div>
-                <?php endforeach; ?>
+
+                <!-- Team Member 2 -->
+                <div class="glass-panel rounded-xl p-6 text-center group hover:-translate-y-2 transition duration-300">
+                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-gray-800 to-black rounded-full flex items-center justify-center mb-4 border border-gray-700 group-hover:border-emerald-500 transition">
+                        <i class="fa-solid fa-chart-network text-3xl text-gray-400 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">Lina Tlemcani</h3>
+                    <p class="text-emerald-400 text-sm mb-4">Data Science Lead</p>
+                    <div class="flex justify-center gap-3 opacity-60 group-hover:opacity-100 transition">
+                        <a href="mailto:lr921@ic.ac.uk" class="hover:text-emerald-400" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                        <a href="#" class="hover:text-indigo-400" title="Discord: cinnamonroll25"><i class="fa-brands fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="glass-panel rounded-xl p-6 text-center group hover:-translate-y-2 transition duration-300">
+                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-gray-800 to-black rounded-full flex items-center justify-center mb-4 border border-gray-700 group-hover:border-emerald-500 transition">
+                        <i class="fa-solid fa-briefcase text-3xl text-gray-400 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">Ying Wang</h3>
+                    <p class="text-emerald-400 text-sm mb-4">Enterprise & Client Focus</p>
+                    <div class="flex justify-center gap-3 opacity-60 group-hover:opacity-100 transition">
+                        <a href="mailto:yingwang.vivian@gmail.com" class="hover:text-emerald-400" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                        <a href="#" class="hover:text-indigo-400" title="Discord: Ying_W"><i class="fa-brands fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="glass-panel rounded-xl p-6 text-center group hover:-translate-y-2 transition duration-300">
+                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-gray-800 to-black rounded-full flex items-center justify-center mb-4 border border-gray-700 group-hover:border-emerald-500 transition">
+                        <i class="fa-solid fa-code-branch text-3xl text-gray-400 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">Harshit Satsangi</h3>
+                    <p class="text-emerald-400 text-sm mb-4">Coded Solution & MCP Lead</p>
+                    <div class="flex justify-center gap-3 opacity-60 group-hover:opacity-100 transition">
+                        <a href="mailto:hs2125@ic.ac.uk" class="hover:text-emerald-400" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                        <a href="#" class="hover:text-indigo-400" title="Discord: hs07_77461"><i class="fa-brands fa-discord"></i></a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -279,7 +272,7 @@ $impactStats = [
             </div>
             <p class="text-gray-500 text-sm mb-6">Imperial College London Team Submission</p>
             <div class="text-xs text-gray-600">
-                &copy; <?= date('Y') ?> Synapse Energy. Released under MIT Commons License.<br>
+                &copy; 2025 Synapse Energy. Released under MIT Commons License.<br>
                 Submitted to Dora Hacks.
             </div>
         </div>
@@ -287,7 +280,16 @@ $impactStats = [
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // --- 1. CHART.JS CONFIGURATION ---
+        // --- 1. CLOCK CONFIGURATION ---
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-GB', { hour12: false });
+            document.getElementById('live-clock').textContent = timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // --- 2. CHART.JS CONFIGURATION ---
         const ctx = document.getElementById('loadChart').getContext('2d');
         
         // Create gradients
@@ -340,7 +342,7 @@ $impactStats = [
             }
         });
 
-        // --- 2. SIMULATION LOOP ---
+        // --- 3. SIMULATION LOOP ---
         const logsContainer = document.getElementById('systemLogs');
         const logs = [
             { msg: "[National Grid] Frequency deviation detected: 49.98Hz", type: "text-yellow-500" },
